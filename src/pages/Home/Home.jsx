@@ -1,8 +1,10 @@
 import { useHttp } from 'hooks/useHttp';
 import { fetchTrendMovies } from 'services/api';
-import s from './Home.module.css';
+
 import MoviesList from 'components/MoviesList/MoviesList';
-import { ThreeDots } from 'react-loader-spinner';
+import Loader from 'components/Loader/Loader';
+
+import s from './Home.module.css';
 
 const Home = () => {
   const [movies] = useHttp(fetchTrendMovies);
@@ -15,25 +17,7 @@ const Home = () => {
       <MoviesList movies={movies} />
     </main>
   ) : (
-    <div
-      style={{
-        margin: '20px auto',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <ThreeDots
-        visible={true}
-        height="80"
-        width="80"
-        color="#4fa94d"
-        radius="9"
-        ariaLabel="three-dots-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
-    </div>
+    <Loader />
   );
 };
 

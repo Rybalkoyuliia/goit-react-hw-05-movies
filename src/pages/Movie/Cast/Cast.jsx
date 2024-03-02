@@ -1,36 +1,19 @@
-import { useHttp } from 'hooks/useHttp';
 import { useParams } from 'react-router-dom';
+
+import { useHttp } from 'hooks/useHttp';
 import { fetchCasts } from 'services/api';
+
+import Loader from 'components/Loader/Loader';
+
 import s from './Cast.module.css';
 import anonymous from '../../../components/TrendMoviesItem/anonymous.webp';
-import { ThreeDots } from 'react-loader-spinner';
 
 const Cast = () => {
   const { id } = useParams();
 
   const [casts] = useHttp(fetchCasts, id);
   if (!casts) {
-    return (
-      <div
-        style={{
-          margin: '20px auto',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

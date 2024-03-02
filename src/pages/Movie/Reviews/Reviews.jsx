@@ -1,41 +1,23 @@
-import { useHttp } from 'hooks/useHttp';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
+import { useHttp } from 'hooks/useHttp';
 import { fetchReviews } from 'services/api';
+import Loader from 'components/Loader/Loader';
+
 import s from './Reviews.module.css';
 import anonymous from '../../../components/TrendMoviesItem/anonymous.webp';
-import { ThreeDots } from 'react-loader-spinner';
 
 const Reviews = () => {
   const { id } = useParams();
 
   const [reviews] = useHttp(fetchReviews, id);
   if (!reviews) {
-    return (
-      <div
-        style={{
-          margin: '20px auto',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      </div>
-    );
+    return <Loader />;
   }
-  console.log(reviews.results);
   const result = reviews.results;
-  return !result ? (
+  console.log(result);
+  return result.length > 0 ? (
     <ul className={s.reviews_list}>
       {result.map(review => (
         <li key={review.id} className={s.reviews_item}>

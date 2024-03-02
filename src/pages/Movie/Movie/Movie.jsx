@@ -1,21 +1,17 @@
-import Button from 'components/Button/Button';
+import { Suspense, useRef } from 'react';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+
 import { useHttp } from 'hooks/useHttp';
-import { useRef } from 'react';
-import {
-  NavLink,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
 import { fetchMovieById } from 'services/api';
+
+import Button from 'components/Button/Button';
+import Loader from 'components/Loader/Loader';
+
 import s from './Movie.module.css';
-import { ThreeDots } from 'react-loader-spinner';
+import anonym from '../../../components/TrendMoviesItem/anonymous.webp';
 
 const Movie = () => {
   const location = useLocation();
-  const nav = useNavigate();
-  console.log(location);
   const goBackRef = useRef(location.state?.from ?? '/');
 
   const fetchGenres = genres => {
@@ -26,47 +22,30 @@ const Movie = () => {
 
   const [movie] = useHttp(fetchMovieById, id);
   if (!movie) {
-    return (
-      <div
-        style={{
-          margin: '20px auto',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          radius="9"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      </div>
-    );
+    return <Loader />;
   }
   return (
     <>
       <main>
-        {location.key === 'default' ? (
-          <Button to={goBackRef.current} />
-        ) : (
-          <button className={s.back_button} onClick={() => nav(-1)}>
-            Go Back
-          </button>
-        )}
+        <Button to={goBackRef.current} />
+
         <h1 className={s.title}>{movie.title}</h1>
         <div className={s.common_wrapper}>
           <div className={s.left_wrapper}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              width={`325px`}
-              height={'100%'}
-            />
+            {movie.poster_path !== null ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                width={`220px`}
+              />
+            ) : (
+              <img
+                src={anonym}
+                alt={movie.title}
+                width={`220px`}
+                height={'350px'}
+              />
+            )}
           </div>
           <div className={s.right_wrapper}>
             <h4>Overview</h4>
@@ -91,8 +70,9 @@ const Movie = () => {
             </nav>
           </div>
         </div>
-
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

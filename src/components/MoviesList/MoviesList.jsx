@@ -1,9 +1,13 @@
-import TrendMoviesItem from 'components/TrendMoviesItem/TrendMoviesItem';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+import TrendMoviesItem from 'components/TrendMoviesItem/TrendMoviesItem';
+import Loader from 'components/Loader/Loader';
+
 import s from './MoviesList.module.css';
-import { ThreeDots } from 'react-loader-spinner';
 
 const MoviesList = ({ movies }) => {
+  const location = useLocation();
   return movies !== null ? (
     <ul className={s.list}>
       {movies.results.map(({ id, title, poster_path }) => (
@@ -12,29 +16,13 @@ const MoviesList = ({ movies }) => {
           id={id}
           title={title}
           poster_path={poster_path}
+          to={id}
+          state={{ from: location }}
         />
       ))}
     </ul>
   ) : (
-    <div
-      style={{
-        margin: '20px auto',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <ThreeDots
-        visible={true}
-        height="80"
-        width="80"
-        color="#4fa94d"
-        radius="9"
-        ariaLabel="three-dots-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
-    </div>
+    <Loader />
   );
 };
 
