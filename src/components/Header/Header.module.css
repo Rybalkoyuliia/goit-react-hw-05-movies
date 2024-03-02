@@ -1,0 +1,49 @@
+.header {
+  overflow: hidden;
+  background-color: transparent;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.logo {
+  font-size: 50px;
+  font-weight: bold;
+  margin-left: 100px;
+}
+
+.navigation_list {
+  display: flex;
+  gap: 30px;
+  margin-right: 100px;
+}
+
+.navigation {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 1.5;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-color: white;
+}
+
+.navigation:hover,
+.navigation:focus {
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+}
+
+.navigation:active {
+  background-color: darkblue;
+}

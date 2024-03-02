@@ -1,0 +1,52 @@
+.item {
+  list-style: none;
+  transition: transform 0.2s;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgb(30, 98, 195);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  color: white;
+}
+.item:hover {
+  transform: scale(1.05);
+  background-color: dodgerblue;
+  color: white;
+}
+
+.link {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie_title {
+  text-align: center;
+  color: dodgerblue;
+  font-size: 20px;
+  max-width: 190px;
+  padding: 20px 5px;
+  margin: 0;
+}
+
+.movie_title:hover {
+  color: white;
+}
+
+.link:hover .movie_title {
+  color: white;
+}
+
+.movie_title:focus {
+  color: darkblue;
+}
+
+.link:focus .movie_title {
+  color: darkblue;
+}
+
+.item:hover .movie_title {
+  color: white;
+}

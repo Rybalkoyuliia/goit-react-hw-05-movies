@@ -1,0 +1,38 @@
+.reviews_item {
+  display: flex;
+}
+
+.reviews_list {
+  margin: 20px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+p {
+  margin: 0;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.avatar {
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.review {
+  font-style: italic;
+}
+
+.neg {
+  margin-left: 100px;
+}

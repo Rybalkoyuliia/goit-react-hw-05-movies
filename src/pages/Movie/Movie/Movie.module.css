@@ -1,0 +1,71 @@
+.back_button {
+  display: block;
+  padding: 10px 10px;
+  width: 90px;
+  margin: 30px 0 0 100px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  color: inherit;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 4px;
+  background-color: white;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.back_button:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.back_button:active {
+  background-color: darkblue;
+}
+
+.common_wrapper {
+  display: flex;
+  gap: 50px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.title {
+  margin-left: 100px;
+}
+
+li {
+  list-style: none;
+}
+
+.info_button {
+  display: block;
+  padding: 10px;
+  width: 70px;
+  margin: 30px 0 0 100px;
+  text-decoration: none;
+  text-align: center;
+  color: inherit;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 4px;
+  background-color: white;
+  color: inherit;
+}
+
+.info_button:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.info_button:active {
+  background-color: darkblue;
+}
+
+.info {
+  display: flex;
+}

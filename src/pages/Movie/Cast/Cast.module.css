@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px 100px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+}
+
+.crew {
+  text-align: center;
+}
